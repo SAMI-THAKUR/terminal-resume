@@ -1,0 +1,12 @@
+.links {
+  color: #c678dd;
+  text-decoration: none;
+  transition: color 0.1s ease-in-out;
+}
+
+.links:hover {
+  color: #e06c75;
+  background-color: #1f2128;
+  padding-left: 3px;
+  padding-right: 3px;
+}

@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.root {
+  line-height: 50px;
+}
+
+.glow {
+  color: #56b6c2;
+  text-shadow: 0 0 5px #56b6c2;
+}
