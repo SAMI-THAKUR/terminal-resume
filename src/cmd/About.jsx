@@ -16,6 +16,9 @@ function About() {
               .typeString(
                 "Hello, my name is Sami I am a second-year engineering student at VESIT (Mumbai), majoring in Artificial Intelligence and Data Science. Currently my main focus is learning FULL STACK WEB DEVELOPMENT and DSA in JAVA and in the future I aspire to learn about MACHINE LEARNING & DATA SCIENCE"
               )
+              .callFunction(() => {
+                window.scrollTo(0, document.body.scrollHeight);
+              })
               .start();
           }}
         />

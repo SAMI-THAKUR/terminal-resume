@@ -27,6 +27,22 @@ let list = [
     desc: `Developed a terminal-based portfolio website using HTML, CSS, and JavaScript. The website is designed to mimic a terminal interface, showcasing various projects and skills.`,
     tech: `React JS | TailwindCSS`,
   },
+  {
+    code: "004",
+    name: "Personal LinkTree",
+    link: "https://link-tree-liart.vercel.app/",
+    github: "https://github.com/SAMI-THAKUR/LINK_TREE",
+    desc: `Developed a personal LinkTree website using HTML, CSS, and JavaScript. The website is designed to showcase various social media links and projects.`,
+    tech: `React JS | TailwindCSS`,
+  },
+  {
+    code: "005",
+    name: "Weather App",
+    link: "",
+    github: "https://github.com/SAMI-THAKUR/weather-site",
+    desc: `Developed a weather application using React and integrated OpenWeather API for real-time weather updates. The application displays the current weather and forecast for the next 5 days.`,
+    tech: `HTML | CSS | JavaScript | REST API | TailwindCSS`,
+  },
 ];
 
 export default function Project_Detail(props) {
@@ -68,15 +84,24 @@ function Template(props) {
             delay: 0.1,
           }}
           onInit={(typewriter) => {
-            typewriter.typeString(desc).start();
+            typewriter
+              .typeString(desc)
+              .callFunction(() => {
+                window.scrollTo(0, document.body.scrollHeight);
+              })
+              .start();
           }}
         />
       </p>
       <div className="flex gap-3 mb-2 font-bold">
-        <a href={link} className=" text-violet-600">
-          LIVE
-        </a>
-        <span>|</span>
+        {link !== "" ? (
+          <>
+            <a href={link} className="text-violet-600">
+              LINK
+            </a>
+            <span>|</span>
+          </>
+        ) : null}
         <a href={github} className="text-violet-600">
           GITHUB
         </a>

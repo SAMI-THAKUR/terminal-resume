@@ -8,7 +8,7 @@ let text3 = String.raw`{gui}    -->   Dive into graphical system`;
 let text4 = String.raw`{cv}     -->   Fetch my resume`;
 let text5 = String.raw`{skills} -->   See what I can do. `;
 let text6 = String.raw`{about}  -->   concise summary of me.`;
-let text7 = String.raw`{edu} -->  Dive into my academic voyage.`;
+let text7 = String.raw`{edu}    -->  Dive into my academic voyage.`;
 let text8 = String.raw`{projects} -->  Roll out my projects.`;
 let text9 = String.raw`{contact} -->   Shoot me a message...`;
 
@@ -39,6 +39,9 @@ function Help() {
               .pauseFor(10)
               .pasteString(text5)
               .pasteString("\n")
+              .callFunction(() => {
+                window.scrollTo(0, document.body.scrollHeight);
+              })
               .pauseFor(10)
               .pasteString(text6)
               .pasteString("\n")
@@ -50,6 +53,9 @@ function Help() {
               .pasteString("\n")
               .pauseFor(10)
               .pasteString(text9)
+              .callFunction(() => {
+                window.scrollTo(0, document.body.scrollHeight);
+              })
               .start();
           }}
         />

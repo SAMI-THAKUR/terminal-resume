@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useContext, useEffect } from "react";
-import { Landing, Input } from "./widgets/widget";
+import { Landing, Input, Error } from "./widgets/widget";
 import {
   Help,
   Skills,
@@ -10,6 +10,7 @@ import {
   Education,
   Project_List,
   Project_Detail,
+  Contact,
 } from "./cmd/cmd";
 import { Command } from "./context/commands";
 
@@ -21,10 +22,16 @@ const cmd = {
   cv: <CV />,
   edu: <Education />,
   projects: <Project_List />,
+  contact: <Contact />,
 };
 
 // for project id //
-var pattern = /^project-00[1-4]$/;
+var pattern = /^project-00[1-5]$/;
+
+function scrollToBottom() {
+  const scrollingElement = document.scrollingElement || document.body;
+  scrollingElement.scrollTop = scrollingElement.scrollHeight;
+}
 
 function App() {
   const [currentCommand, setCmd] = useState("");
@@ -65,10 +72,12 @@ function App() {
     } else {
       setComponents((prevComponents) => [
         ...prevComponents,
+        { id: newId + 1, component: <Error id={newId + 1} /> },
         { id: newId + 1, component: <Input id={newId + 1} /> },
       ]);
     }
     setCmd("");
+    scrollToBottom();
   };
 
   useEffect(() => {
@@ -79,11 +88,14 @@ function App() {
     };
 
     window.addEventListener("keydown", handleKeyDown);
-
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [commandEntered, execute]);
+  }, [commandEntered, currentCommand]);
+
+  useEffect(() => {
+    window.scrollTo(0, document.body.scrollHeight);
+  }, []);
 
   return (
     <Command.Provider

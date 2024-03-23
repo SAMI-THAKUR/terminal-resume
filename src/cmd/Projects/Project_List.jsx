@@ -16,17 +16,17 @@ let list = [
   {
     name: "Terminal Portfolio",
     link: "",
-    code: "004",
+    code: "003",
   },
   {
     name: "Personal LinkTree",
     link: "https://link-tree-liart.vercel.app/",
-    code: "003",
+    code: "004",
   },
   {
     name: "Weather App",
     link: "",
-    code: "004",
+    code: "005",
   },
 ];
 
@@ -82,6 +82,9 @@ function Link(props) {
               .typeString(link_name)
               .typeString(" --> ")
               .typeString(id)
+              .callFunction(() => {
+                window.scrollTo(0, document.body.scrollHeight);
+              })
               .start();
           }}
         />

@@ -22,7 +22,12 @@ function Education() {
             cursor: "",
           }}
           onInit={(typewriter) => {
-            typewriter.typeString(edu).start();
+            typewriter
+              .typeString(edu)
+              .callFunction(() => {
+                window.scrollTo(0, document.body.scrollHeight);
+              })
+              .start();
           }}
         />
       </pre>

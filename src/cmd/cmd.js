@@ -4,6 +4,7 @@ import CV from "./CV";
 import Help from "./Help";
 import GUI from "./GUI";
 import Education from "./Education";
+import Contact from "./Contact";
 import { Project_List, Project_Detail } from "./Projects/projects";
 
 export {
@@ -15,4 +16,5 @@ export {
   Education,
   Project_List,
   Project_Detail,
+  Contact,
 };

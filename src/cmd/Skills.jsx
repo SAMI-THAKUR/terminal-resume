@@ -25,6 +25,9 @@ function Skills() {
               .pasteString(back + "\n")
               .pauseFor(200)
               .pasteString(tools)
+              .callFunction(() => {
+                window.scrollTo(0, document.body.scrollHeight);
+              })
               .start();
           }}
         />
