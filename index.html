@@ -9,20 +9,6 @@
   <script>
     console.log("Error 404: Page not found. Just kidding, I'm a terminal.");
     console.log("Don't worry, I'm not spying on you... or am I? 😏");
-    console.log = function () {};
-    function scrollToBottom(lastOffset) {
-      const offset = document.body.scrollHeight;
-      // check if no more scrolling required.
-      if (lastOffset === offset) {
-        return;
-      }
-      // if it is, go to bottom.
-      window.scrollTo(0, offset);
-      // Now, trigger your `loadMore` logic, whatever it might be, then call scrollToBottom again.
-      triggerLoadMore().then(() => scrollToBottom(offset));
-      // or triggerLoadMore(() => scrollToBottom(offset));
-    }
-    scrollToBottom();
   </script>
   <body class="bg-bgmain max-h-full">
     <div id="root"></div>
