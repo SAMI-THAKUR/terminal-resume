@@ -34,16 +34,16 @@ let list = [
     link: "https://link-tree-liart.vercel.app/",
     github: "https://github.com/SAMI-THAKUR/LINK_TREE",
     desc: `Developed a personal LinkTree website using HTML, CSS, and JavaScript. The website is designed to showcase various social media links and projects.`,
-    tech: `React JS | TailwindCSS`,
+    tech: `React JS |Redux | TailwindCSS`,
   },
-  {
-    code: "005",
-    name: "Weather App",
-    link: "",
-    github: "https://github.com/SAMI-THAKUR/weather-site",
-    desc: `Developed a weather application using React and integrated OpenWeather API for real-time weather updates. The application displays the current weather and forecast for the next 5 days.`,
-    tech: `HTML | CSS | JavaScript | REST API | TailwindCSS`,
-  },
+  // {
+  //   code: "005",
+  //   name: "Weather App",
+  //   link: "",
+  //   github: "https://github.com/SAMI-THAKUR/weather-site",
+  //   desc: `Developed a weather application using React and integrated OpenWeather API for real-time weather updates. The application displays the current weather and forecast for the next 5 days.`,
+  //   tech: `HTML | CSS | JavaScript | REST API | TailwindCSS`,
+  // },
 ];
 
 export default function Project_Detail(props) {

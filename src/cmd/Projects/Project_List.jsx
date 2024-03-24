@@ -23,11 +23,6 @@ let list = [
     link: "https://link-tree-liart.vercel.app/",
     code: "004",
   },
-  {
-    name: "Weather App",
-    link: "",
-    code: "005",
-  },
 ];
 
 function Project_List() {
