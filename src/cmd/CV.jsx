@@ -15,10 +15,7 @@ function CV() {
         />
       </h3>
       {setTimeout(() => {
-        window.open(
-          "https://drive.google.com/file/d/1XPV0qowlpPDxNqVZ0gMpFz_HzxUjbEu2/view?usp=sharing",
-          "_blank"
-        );
+        window.open("src/assets/Resume_Sami_Thakur.pdf", "_blank");
       }, 4000)}
     </div>
   );

@@ -1,6 +1,13 @@
 import "./App.css";
-import { useState, useContext, useEffect } from "react";
+
+// HOOKS //
+import { useState, useEffect } from "react";
+// REDUX //
+import { useSelector, useDispatch } from "react-redux";
+
+// WIDGETS //
 import { Landing, Input, Error } from "./widgets/widget";
+// CMDS //
 import {
   Help,
   Skills,
@@ -12,7 +19,8 @@ import {
   Project_Detail,
   Contact,
 } from "./cmd/cmd";
-import { Command } from "./context/commands";
+// REDUCERS FROM FEATURES //
+import { cmdEntered, history } from "./features/CMD";
 
 const cmd = {
   help: <Help />,
@@ -25,42 +33,33 @@ const cmd = {
   contact: <Contact />,
 };
 
-// for project id //
+// REGEX for pattern matching of project-001 to project-005 //
 var pattern = /^project-00[1-5]$/;
 
-function scrollToBottom() {
-  const scrollingElement = document.scrollingElement || document.body;
-  scrollingElement.scrollTop = scrollingElement.scrollHeight;
-}
-
 function App() {
-  const [currentCommand, setCmd] = useState("");
-  const [history, setHistory] = useState([""]);
+  // holds the components to be rendered //
   const [components, setComponents] = useState([
     { id: 0, component: <Input id={0} /> },
   ]);
-  const [active, setActive] = useState(0);
 
-  const commandEntered = (cmd) => {
-    setCmd(cmd);
-    setHistory([...history, cmd]);
-  };
+  // Redux store and reducers //
+  const dispatch = useDispatch();
+  const cmdCurrent = useSelector((state) => state.command.currentCommand);
 
+  // Function to execute the command //
   const execute = () => {
     const newId = components.length;
-    setActive(newId - 1);
-    if (currentCommand === "clear") {
-      setActive(0);
-      setComponents([{ id: newId + 2, component: <Input id={newId + 2} /> }]);
-      return;
-    } else if (cmd[currentCommand] !== undefined) {
+    dispatch(history(cmdCurrent));
+    if (cmdCurrent === "clear") {
+      setComponents([{ id: newId + 1, component: <Input id={newId + 2} /> }]);
+    } else if (cmd[cmdCurrent] !== undefined) {
       setComponents((prevComponents) => [
         ...prevComponents,
-        { id: newId + 1, component: cmd[currentCommand] },
+        { id: newId + 1, component: cmd[cmdCurrent] },
         { id: newId + 2, component: <Input id={newId + 2} /> },
       ]);
-    } else if (pattern.test(currentCommand)) {
-      let id = currentCommand.split("-")[1];
+    } else if (pattern.test(cmdCurrent)) {
+      let id = cmdCurrent.split("-")[1];
       setComponents((prevComponents) => [
         ...prevComponents,
         {
@@ -76,8 +75,7 @@ function App() {
         { id: newId + 1, component: <Input id={newId + 1} /> },
       ]);
     }
-    setCmd("");
-    scrollToBottom();
+    dispatch(cmdEntered(""));
   };
 
   useEffect(() => {
@@ -86,35 +84,21 @@ function App() {
         execute();
       }
     };
-
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [commandEntered, currentCommand]);
-
-  useEffect(() => {
-    window.scrollTo(0, document.body.scrollHeight);
-  }, []);
+  }, [cmdCurrent]);
 
   return (
-    <Command.Provider
-      value={{
-        history,
-        currentCommand,
-        setHistory,
-        commandEntered,
-      }}
-    >
-      <div className="mb-5">
-        <Landing />
-        {components.map(({ id, component }) => (
-          <div key={id} className="mt-0">
-            {component}
-          </div>
-        ))}
-      </div>
-    </Command.Provider>
+    <div className="pb-10">
+      <Landing />
+      {components.map(({ id, component }) => (
+        <div key={id} className="mt-0">
+          {component}
+        </div>
+      ))}
+    </div>
   );
 }
 

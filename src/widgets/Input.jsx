@@ -1,20 +1,30 @@
 import "./Widget.css";
-import { useContext, useState, useEffect } from "react";
-import { Command } from "../context/commands";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { history, cmdEntered } from "../features/CMD";
 
 function Input(id) {
-  const { history, commandEntered, currentCommand } = useContext(Command);
+  // Redux store and reducers //
+  const dispatch = useDispatch();
+  const cmdhistory = useSelector((state) => state.command.history);
+  const currentCommand = useSelector((state) => state.command.currentCommand);
+
+  // State for input field //
   const [active, setActive] = useState(true);
   const [inputValue, setInputValue] = useState(currentCommand);
-  const [historyIndex, setHistoryIndex] = useState(history.length - 1);
+  const [historyIndex, setHistoryIndex] = useState(cmdhistory.length - 1);
+
+  // Functions to handle input field //
   const handleChanges = (e) => {
     setInputValue(e.target.value);
-    // commandEntered(e.target.value);
   };
+
+  // Functions to handle enter key and arrow keys //
   const handleEnterKey = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      commandEntered(inputValue);
+      dispatch(cmdEntered(e.target.value));
+      dispatch(history(e.target.value));
       setActive(false);
     }
   };
@@ -22,18 +32,17 @@ function Input(id) {
   const handleArrowKey = (e) => {
     if (e.key === "ArrowUp") {
       e.preventDefault();
-      if (historyIndex >= 0) {
-        setInputValue(history[historyIndex]);
+      if (historyIndex > 0) {
+        setInputValue(cmdhistory[historyIndex - 1]);
         setHistoryIndex((prevIndex) => prevIndex - 1);
       }
     } else if (e.key === "ArrowDown") {
-      e.preventDefault();
       if (historyIndex < history.length - 1) {
+        setInputValue(cmdhistory[historyIndex + 1]);
         setHistoryIndex((prevIndex) => prevIndex + 1);
-        setInputValue(history[historyIndex + 1]);
       } else {
-        setHistoryIndex(history.length - 1);
         setInputValue(currentCommand);
+        setHistoryIndex(history.length - 1);
       }
     }
   };
@@ -43,7 +52,7 @@ function Input(id) {
       <h2 className="text-banner font-mono glow font-bold">
         <span className="text-[#00ff00]">Guest</span>@PixelResume ~
       </h2>
-      <div class="cursor ">
+      <div className="cursor ">
         <input
           type="text"
           className="bg-transparent focus:text-text focus:border-none border-none text-text font-tech  text-[20px , 10px] outline-none"

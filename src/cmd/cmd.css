@@ -10,3 +10,7 @@
   padding-left: 1px;
   padding-right: 1px;
 }
+
+.social:hover {
+  background-color: #d5d5d5;
+}

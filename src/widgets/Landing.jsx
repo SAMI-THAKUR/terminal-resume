@@ -6,7 +6,7 @@ function Landing() {
       <h2 className="text-text ml-10 font-tech tracking-wider mt-5">
         sami@pixelresume:~$ | sami.thakur2804@gmail.com
       </h2>
-      <pre class="font-mono text-banner text-[0.7rem]  ml-10">
+      <pre className="font-mono text-banner text-[0.7rem]  ml-10">
         {String.raw`--------------------------------------------------------------------------------------------------------------------
 
             ███████╗ █████╗ ███╗   ███╗██╗    ████████╗██╗  ██╗ █████╗ ██╗  ██╗██╗   ██╗██████╗ 

@@ -11,7 +11,6 @@ export default {
       },
       fontFamily: {
         tech: ["Roboto Mono", "monospace"],
-        fett: ["Monofett", "monospace"],
       },
     },
   },

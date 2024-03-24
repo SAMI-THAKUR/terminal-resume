@@ -22,11 +22,14 @@ function Skills() {
               .pauseFor(100)
               .typeString(front + "\n")
               .pauseFor(100)
+              .callFunction(() => {
+                window.scrollTo(0, document.documentElement.scrollHeight);
+              })
               .pasteString(back + "\n")
               .pauseFor(200)
               .pasteString(tools)
               .callFunction(() => {
-                window.scrollTo(0, document.body.scrollHeight);
+                window.scrollTo(0, document.documentElement.scrollHeight);
               })
               .start();
           }}

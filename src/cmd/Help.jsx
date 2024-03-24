@@ -40,7 +40,7 @@ function Help() {
               .pasteString(text5)
               .pasteString("\n")
               .callFunction(() => {
-                window.scrollTo(0, document.body.scrollHeight);
+                window.scrollTo(0, document.documentElement.scrollHeight);
               })
               .pauseFor(10)
               .pasteString(text6)
@@ -54,7 +54,7 @@ function Help() {
               .pauseFor(10)
               .pasteString(text9)
               .callFunction(() => {
-                window.scrollTo(0, document.body.scrollHeight);
+                window.scrollTo(0, document.documentElement.scrollHeight);
               })
               .start();
           }}

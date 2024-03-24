@@ -1,4 +1,5 @@
 import Typewriter from "typewriter-effect";
+import "../cmd.css";
 
 let list = [
   {
@@ -96,13 +97,13 @@ function Template(props) {
       <div className="flex gap-3 mb-2 font-bold">
         {link !== "" ? (
           <>
-            <a href={link} className="text-violet-600">
+            <a href={link} className="text-violet-600 links">
               LINK
             </a>
             <span>|</span>
           </>
         ) : null}
-        <a href={github} className="text-violet-600">
+        <a href={github} className="text-violet-600 links">
           GITHUB
         </a>
       </div>

@@ -2,13 +2,14 @@ import Typewriter from "typewriter-effect";
 let edu = String.raw`|--- B.E in Artificial Intelligence and Data Science, {2022-26}
 |    Vivekanand Education Society's Institute of Technology, Mumbai
 |    CGPA: 9.38 (upto Sem-3)
-|-------------------------------------------------------------
+|`;
+
+let edu2 = String.raw`-------------------------------------------------------------
 |--- HSC, {2020-22}
 |    Percentage: 88.5%
 |--------------------------------------------------------------
 |--- SSC, {2020}
-|    Percentage: 91.2%
-|`;
+|    Percentage: 91.2%`;
 
 function Education() {
   return (
@@ -24,6 +25,10 @@ function Education() {
           onInit={(typewriter) => {
             typewriter
               .typeString(edu)
+              .callFunction(() => {
+                window.scrollTo(0, document.documentElement.scrollHeight);
+              })
+              .typeString(edu2)
               .callFunction(() => {
                 window.scrollTo(0, document.body.scrollHeight);
               })
