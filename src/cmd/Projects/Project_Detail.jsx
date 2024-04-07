@@ -6,7 +6,8 @@ let list = [
     code: "002",
     name: "Personal Potfolio",
     link: "https://sami-portfolio-omega.vercel.app/",
-    github: "https://github.com/SAMI-THAKUR/SAMI-Portfolio",
+    github:
+      "https://github.com/SAMI-THAKUR/SAMI-Portfolio",
     desc: `I Needed a platform to showcase personal projects and skills. Developed a responsive portfolio website using HTML, CSS, JS, Tailwind CSS & Firebase for database integration. Utilized front-end technologies to design and implement the website, showcasing various
     projects and skills`,
     tech: `HTML | CSS | JavaScript | TailwindCSS | Firebase`,
@@ -15,7 +16,8 @@ let list = [
     code: "001",
     name: "Currency Converter",
     link: "https://currency-exchange-rate-six.vercel.app/",
-    github: "https://currency-exchange-rate-six.vercel.app/",
+    github:
+      "https://currency-exchange-rate-six.vercel.app/",
     desc: `Recognized the need for a practical currency conversion tool. Developed a responsive currency converter application using React and integrated currency
     exchange API for real-time rates.`,
     tech: `React JS | REST API | JavaScript | TailwindCSS`,
@@ -23,8 +25,9 @@ let list = [
   {
     code: "003",
     name: "Terminal Portfolio",
-    link: "https://link-tree-liart.vercel.app/",
-    github: "https://currency-exchange-rate-six.vercel.app/",
+    link: "https://pixel-resume.vercel.app/",
+    github:
+      "https://github.com/SAMI-THAKUR/terminal-resume",
     desc: `Developed a terminal-based portfolio website using ReactJS, Tailwind CSS & Redux. The website is designed to mimic a terminal interface, showcasing various projects and skills.`,
     tech: `React JS | Redux | TailwindCSS`,
   },
@@ -32,7 +35,8 @@ let list = [
     code: "004",
     name: "Personal LinkTree",
     link: "https://link-tree-liart.vercel.app/",
-    github: "https://github.com/SAMI-THAKUR/LINK_TREE",
+    github:
+      "https://github.com/SAMI-THAKUR/LINK_TREE",
     desc: `Developed a personal LinkTree website using ReactJS, Tailwind CSS. The website is designed to showcase various social media links and projects.`,
     tech: `React JS | TailwindCSS`,
   },
@@ -46,12 +50,17 @@ let list = [
   // },
 ];
 
-export default function Project_Detail(props) {
+export default function Project_Detail(
+  props,
+) {
   const { code } = props;
   return (
     <>
       {list
-        .filter((value) => value.code === code)
+        .filter(
+          (value) =>
+            value.code === code,
+        )
         .map((value, index) => {
           return (
             <Template
@@ -69,13 +78,21 @@ export default function Project_Detail(props) {
 }
 
 function Template(props) {
-  const { name, link, tech, github, desc } = props;
+  const {
+    name,
+    link,
+    tech,
+    github,
+    desc,
+  } = props;
   return (
     <div className="text-white ml-10 text-sm">
       <h1 className="mb-2 font-tech font-bold text-cyan-400 text-base mt-2">
         {name}
       </h1>
-      <pre className="text-sm text-cyan-400 mb-2">{tech}</pre>
+      <pre className="text-sm text-cyan-400 mb-2">
+        {tech}
+      </pre>
       <p className="text-white w-[28rem] text-sm font-tech tracking-wider leading-7 mb-2">
         <Typewriter
           options={{
@@ -88,7 +105,11 @@ function Template(props) {
             typewriter
               .typeString(desc)
               .callFunction(() => {
-                window.scrollTo(0, document.body.scrollHeight);
+                window.scrollTo(
+                  0,
+                  document.body
+                    .scrollHeight,
+                );
               })
               .start();
           }}
@@ -97,13 +118,19 @@ function Template(props) {
       <div className="flex gap-3 mb-2 font-bold">
         {link !== "" ? (
           <>
-            <a href={link} className="text-violet-600 links">
+            <a
+              href={link}
+              className="text-violet-600 links"
+            >
               LINK
             </a>
             <span>|</span>
           </>
         ) : null}
-        <a href={github} className="text-violet-600 links">
+        <a
+          href={github}
+          className="text-violet-600 links"
+        >
           GITHUB
         </a>
       </div>
